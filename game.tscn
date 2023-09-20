@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm21m68e4oq1l"]
+[gd_scene load_steps=5 format=3 uid="uid://bm21m68e4oq1l"]
 
+[ext_resource type="Texture2D" uid="uid://b3qlispicvagl" path="res://Assets/great-stars-from-hubble.jpg" id="1_4ahe8"]
 [ext_resource type="PackedScene" uid="uid://dfobqgtbmasc0" path="res://player.gd/player.tscn" id="1_b2pjf"]
+[ext_resource type="Script" path="res://Sprite2D2.gd" id="2_6eiky"]
 [ext_resource type="PackedScene" uid="uid://wrlt1itcymax" path="res://Asteroid/asteroid.tscn" id="2_iaw30"]
 
 [node name="Game" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(670, 301)
+scale = Vector2(1.20571, 1.35833)
+texture = ExtResource("1_4ahe8")
+script = ExtResource("2_6eiky")
 
 [node name="Player" parent="." instance=ExtResource("1_b2pjf")]
 
