@@ -118,15 +118,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5y5b1")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 50.0
 }]
 
 [node name="Explosion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_p8nl6")
-frame = 4
-frame_progress = 0.14722
 script = ExtResource("2_i8gy8")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

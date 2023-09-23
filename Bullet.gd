@@ -26,7 +26,7 @@ func _on_body_entered(body):
 	if Effects != null:
 		var explosion = Explosion.instantiate()
 		Effects.add_child(explosion)
-		explosion.global_postion = global_position
+		explosion.global_position = global_position
 	queue_free()
 	
 

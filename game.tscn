@@ -13,7 +13,9 @@ scale = Vector2(1.20571, 1.35833)
 texture = ExtResource("1_4ahe8")
 script = ExtResource("2_6eiky")
 
-[node name="Player" parent="." instance=ExtResource("1_b2pjf")]
+[node name="Player_Container" type="Node2D" parent="."]
+
+[node name="Player" parent="Player_Container" instance=ExtResource("1_b2pjf")]
 
 [node name="Asteroid_Container" type="Node2D" parent="."]
 

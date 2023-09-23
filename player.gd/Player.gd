@@ -10,7 +10,7 @@ var speed = 8
 var max_speed = 700
 var rotate_speed = 0.08
 var health = 10
-var nose = Vector2(0,-60)
+var nose = Vector2(0,-80)
 var Bullet = load("res://player.gd/bullet.tscn")
 var Effects = null
 var Explosion = load("res://Assets/Explosion21.png")
@@ -36,7 +36,6 @@ func _physics_process(_delta):
 	position.y = wrapf(position.y, 0, 648)
 	velocity = velocity.normalized() * clamp(velocity.length(), 0, max_speed)
 	
-	print(velocity.length())
 	
 	move_and_slide()
 	
@@ -44,7 +43,7 @@ func _physics_process(_delta):
 		var bullet = Bullet.instantiate()
 		bullet.position = position + nose.rotated(rotation)
 		bullet.rotation = rotation
-		var Effects = get_node_or_null("/root/Game/Effects")
+		Effects = get_node_or_null("/root/Game/Effects")
 		if Effects != null:
 			Effects.add_child(bullet)
 		
