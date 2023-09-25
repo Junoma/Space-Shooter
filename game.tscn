@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm21m68e4oq1l"]
+[gd_scene load_steps=7 format=3 uid="uid://bm21m68e4oq1l"]
 
 [ext_resource type="Texture2D" uid="uid://b3qlispicvagl" path="res://Assets/great-stars-from-hubble.jpg" id="1_4ahe8"]
 [ext_resource type="PackedScene" uid="uid://dfobqgtbmasc0" path="res://player.gd/player.tscn" id="1_b2pjf"]
 [ext_resource type="Script" path="res://Sprite2D2.gd" id="2_6eiky"]
 [ext_resource type="PackedScene" uid="uid://wrlt1itcymax" path="res://Asteroid/asteroid.tscn" id="2_iaw30"]
+[ext_resource type="FontFile" uid="uid://eapvg4c1b12y" path="res://Assets/Bullfrog.otf" id="5_ffkly"]
+[ext_resource type="Script" path="res://UI/HUD.gd" id="5_kni1e"]
 
 [node name="Game" type="Node2D"]
 
@@ -26,3 +28,106 @@ position = Vector2(100, 100)
 position = Vector2(923, 102)
 
 [node name="Effects" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_kni1e")
+
+[node name="Score" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("5_ffkly")
+theme_override_font_sizes/font_size = 50
+text = "Score:"
+
+[node name="Time" type="Label" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_right = 20.0
+offset_bottom = 56.0
+grow_horizontal = 0
+scale = Vector2(0.702343, 1.02327)
+theme_override_fonts/font = ExtResource("5_ffkly")
+theme_override_font_sizes/font_size = 55
+text = "Time:"
+
+[node name="Indicator_Container" type="Control" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="UI/HUD"]
+autostart = true
+
+[node name="Menu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -248.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ffkly")
+theme_override_font_sizes/font_size = 50
+text = "Pause Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="UI/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -20.0
+offset_right = 100.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ffkly")
+theme_override_font_sizes/font_size = 20
+text = "Restart "
+
+[node name="Quit" type="Button" parent="UI/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 40.0
+offset_right = 100.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_ffkly")
+theme_override_font_sizes/font_size = 20
+text = "Quit
+"
+
+[connection signal="timeout" from="UI/HUD/Timer" to="UI/HUD" method="_on_timer_timeout"]
