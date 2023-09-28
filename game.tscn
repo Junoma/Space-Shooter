@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm21m68e4oq1l"]
+[gd_scene load_steps=10 format=3 uid="uid://bm21m68e4oq1l"]
 
 [ext_resource type="Texture2D" uid="uid://b3qlispicvagl" path="res://Assets/great-stars-from-hubble.jpg" id="1_4ahe8"]
 [ext_resource type="PackedScene" uid="uid://dfobqgtbmasc0" path="res://player.gd/player.tscn" id="1_b2pjf"]
 [ext_resource type="Script" path="res://Sprite2D2.gd" id="2_6eiky"]
 [ext_resource type="PackedScene" uid="uid://wrlt1itcymax" path="res://Asteroid/asteroid.tscn" id="2_iaw30"]
+[ext_resource type="Script" path="res://Player_Container.gd" id="3_fqyth"]
 [ext_resource type="FontFile" uid="uid://eapvg4c1b12y" path="res://Assets/Bullfrog.otf" id="5_ffkly"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="5_kni1e"]
+[ext_resource type="PackedScene" uid="uid://ql2j4dmf5ng4" path="res://Enemy/enemy.tscn" id="6_tcxcs"]
+[ext_resource type="Script" path="res://UI/Menu.gd" id="7_2434k"]
 
 [node name="Game" type="Node2D"]
 
@@ -15,19 +18,29 @@ scale = Vector2(1.20571, 1.35833)
 texture = ExtResource("1_4ahe8")
 script = ExtResource("2_6eiky")
 
-[node name="Player_Container" type="Node2D" parent="."]
-
-[node name="Player" parent="Player_Container" instance=ExtResource("1_b2pjf")]
-
 [node name="Asteroid_Container" type="Node2D" parent="."]
 
 [node name="Asteroid" parent="Asteroid_Container" instance=ExtResource("2_iaw30")]
 position = Vector2(100, 100)
+scale = Vector2(0.3, 0.3)
 
 [node name="Asteroid2" parent="Asteroid_Container" instance=ExtResource("2_iaw30")]
 position = Vector2(923, 102)
+scale = Vector2(0.4, 0.4)
 
 [node name="Effects" type="Node2D" parent="."]
+
+[node name="Player_Container" type="Node2D" parent="."]
+script = ExtResource("3_fqyth")
+
+[node name="Player" parent="Player_Container" instance=ExtResource("1_b2pjf")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Enemy Container" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemy Container" instance=ExtResource("6_tcxcs")]
+position = Vector2(400, 200)
+scale = Vector2(1, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -74,12 +87,24 @@ grow_vertical = 2
 autostart = true
 
 [node name="Menu" type="Control" parent="UI"]
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("7_2434k")
+
+[node name="ColorRect" type="ColorRect" parent="UI/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.792157, 0.639216, 0.952941, 1)
 
 [node name="Label" type="Label" parent="UI/Menu"]
 layout_mode = 1
@@ -131,3 +156,5 @@ text = "Quit
 "
 
 [connection signal="timeout" from="UI/HUD/Timer" to="UI/HUD" method="_on_timer_timeout"]
+[connection signal="pressed" from="UI/Menu/Restart" to="UI/Menu" method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/Menu/Quit" to="UI/Menu" method="_on_quit_pressed"]

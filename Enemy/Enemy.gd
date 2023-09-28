@@ -1,17 +1,20 @@
 extends CharacterBody2D
 
 var Bullet = load("res://Enemy/enemy_bullet.tscn")
+var health = 10
+var y_positions = [100,150,200,500,550]
+var initial_position = Vector2.ZERO
 var direction = Vector2(1.5,0)
 var wobble = 30.0
 
 func _ready():
 	initial_position.x = -100
-	initial_position.y = y_positions[randi() % y+positions.size()]
+	initial_position.y = y_positions[randi() % y_positions.size()]
 	position = initial_position
 	
 func _physics_process(_delta):
 	position += direction 
-	position.y = initial_position.y +sin(posision.x/20)*wobble
+	position.y = initial_position.y +sin(position.x/20)*wobble
 	if position.x > Global.VP.x + 100:
 		queue_free()
 

@@ -8,11 +8,8 @@ var Effects = null
 var Explosion = load("res://Effects/explosion.tscn")
 
 
-
 func _ready():
 	velocity = Vector2(0,-speed).rotated(rotation)
-
-
 
 
 func _physics_process(_delta):
