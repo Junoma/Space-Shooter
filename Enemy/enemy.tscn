@@ -4,14 +4,19 @@
 [ext_resource type="Texture2D" uid="uid://dnafojnhm5av4" path="res://Assets/Enemy.png" id="2_mvo67"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_shdbw"]
+radius = 33.06
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_f2icg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.18457, 0.217448)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_mvo67")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(-200, -200, -75, -190, 5, -185, 100, -205, 130, -170, 75, -120, 120, -30, 155, 170, -165, 240, -270, 220, -270, 165, -180, 60, -250, 0, -230, -35, -180, -150, -220, -175)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -20,6 +25,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-45, 30)
 scale = Vector2(9.5, 9.5)
 shape = SubResource("CircleShape2D_shdbw")
 one_way_collision_margin = 40.0

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm21m68e4oq1l"]
+[gd_scene load_steps=9 format=3 uid="uid://bm21m68e4oq1l"]
 
 [ext_resource type="Texture2D" uid="uid://b3qlispicvagl" path="res://Assets/great-stars-from-hubble.jpg" id="1_4ahe8"]
-[ext_resource type="PackedScene" uid="uid://dfobqgtbmasc0" path="res://player.gd/player.tscn" id="1_b2pjf"]
-[ext_resource type="Script" path="res://Sprite2D2.gd" id="2_6eiky"]
+[ext_resource type="Script" path="res://Effects/Background.gd" id="2_83ac0"]
 [ext_resource type="PackedScene" uid="uid://wrlt1itcymax" path="res://Asteroid/asteroid.tscn" id="2_iaw30"]
 [ext_resource type="Script" path="res://Player_Container.gd" id="3_fqyth"]
 [ext_resource type="FontFile" uid="uid://eapvg4c1b12y" path="res://Assets/Bullfrog.otf" id="5_ffkly"]
@@ -12,11 +11,11 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 position = Vector2(670, 301)
 scale = Vector2(1.20571, 1.35833)
 texture = ExtResource("1_4ahe8")
-script = ExtResource("2_6eiky")
+script = ExtResource("2_83ac0")
 
 [node name="Asteroid_Container" type="Node2D" parent="."]
 
@@ -33,14 +32,9 @@ scale = Vector2(0.4, 0.4)
 [node name="Player_Container" type="Node2D" parent="."]
 script = ExtResource("3_fqyth")
 
-[node name="Player" parent="Player_Container" instance=ExtResource("1_b2pjf")]
-scale = Vector2(0.5, 0.5)
-
 [node name="Enemy Container" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemy Container" instance=ExtResource("6_tcxcs")]
-position = Vector2(400, 200)
-scale = Vector2(1, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
