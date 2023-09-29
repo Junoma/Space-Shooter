@@ -1,6 +1,6 @@
 extends Node2D
 
-var Player = load("res://player.gd/Player.gd")
+var Player = load("res://Player/player.tscn")
 
 func _physics_process(_delta):
 	if get_child_count() == 0:

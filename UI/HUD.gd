@@ -24,7 +24,7 @@ func _ready():
 	
 func _physics_process(_delta):
 	position += dicrection
-	position.y = initial_position.Y + sin(position.x/20)*wobble
+	position.y = initial_position.y + sin(position.x/20)*wobble
 	if position.x > 1200:
 		queue_free() 
 
